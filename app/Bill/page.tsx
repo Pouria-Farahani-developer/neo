@@ -1,14 +1,9 @@
-"use client"
-import useStore from "@/lib/store/useCounterStore";
+import Counter from "@/components/pages/bill/Counter";
 
-function Counter() {
-    const { count, inc } = useStore()
-    return (
-        <div>
-            <span>{count}</span>
-            <button onClick={inc}>one up</button>
-        </div>
+function Bill() {
+    return(
+        <Counter />
     )
 }
 
-export default Counter;
+export default Bill;
