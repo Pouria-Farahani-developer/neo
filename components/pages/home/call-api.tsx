@@ -1,41 +1,81 @@
-'use client';
-import {useUsersList} from "@/services/src/hooks/bill/get-user-list/get-user-list";
+"use client"
+import React, { useState } from 'react';
+import {useUserMutations} from "@/services/src/hooks/bill/post-user-list/post-user-list";
 
 
+function UserCreationForm() {
+    const { mutate , isPending , isError , isSuccess , error} = useUserMutations();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        username: '',
+    });
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
-export default function ReactQueryTestPage() {
-    const { data , isLoading, isError, error, isFetching } = useUsersList()
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
 
+        mutate(formData, {
+            onSuccess: (data) => {
+                console.log("User created successfully (from component):", data);
+            },
+            onError: (err) => {
+                console.error("Failed to create user (from component):", err);
+            }
+        });
+    };
 
-    if (isLoading) {
-        return (
-            <div className="text-center p-10">
-                <p>در حال بارگذاری اولیه داده‌ها...</p>
-            </div>
-        );
-    }
-
-    if (isError) {
-        return (
-            <div className="text-red-500 p-10">
-                <p>خطا در دریافت داده:</p>
-                <p>{error instanceof Error ? error.message : 'خطای ناشناخته'}</p>
-            </div>
-        );
-    }
-
-    console.log(data)
 
     return (
-        <div className="p-10">
-            <h1 className="text-3xl font-bold mb-6">لیست کاربران (با TanStack Query)</h1>
+        <div style={{ padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
+            <h3>ایجاد کاربر جدید</h3>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
 
-            {/* نمایش وضعیت fetch در پس‌زمینه */}
-            {isFetching && !isLoading && (
-                <div className="mb-4 text-blue-600">درحال به‌روزرسانی داده‌ها...</div>
-            )}
+                <input
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Name"
+                    required
+                    disabled={isPending}
+                />
+                <input
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    type="email"
+                    required
+                    disabled={isPending}
+                />
+                <input
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder="Username"
+                    required
+                    disabled={isPending}
+                />
 
+                <button
+                    type="submit"
+                    disabled={isPending}
+                    style={{ padding: '10px', backgroundColor: isPending ? '#aaa' : 'blue', color: 'white', border: 'none', cursor: isPending ? 'not-allowed' : 'pointer' }}
+                >
+                    {isPending ? 'در حال ارسال...' : 'ارسال به API'}
+                </button>
+            </form>
+
+            <div style={{ marginTop: '15px' }}>
+                {isError && <p style={{ color: 'red' }}>خطا در ارسال: {error?.message}</p>}
+                {isSuccess && <p style={{ color: 'green' }}>✅ کاربر با موفقیت اضافه شد و لیست رفرش شد.</p>}
+            </div>
         </div>
     );
 }
+
+export default UserCreationForm;
