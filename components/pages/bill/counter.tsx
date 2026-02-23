@@ -1,5 +1,5 @@
 "use client"
-import useStore from "@/lib/store/useCounterStore";
+import useStore from "@/lib/store/src/useCounterStore";
 
 function Counter() {
     const { count, inc } = useStore()

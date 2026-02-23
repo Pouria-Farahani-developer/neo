@@ -1,4 +1,4 @@
-import Counter from "@/components/pages/bill/Counter";
+import Counter from "@/components/pages/bill/counter";
 
 function Bill() {
     return(
