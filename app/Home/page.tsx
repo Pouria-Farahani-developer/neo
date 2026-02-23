@@ -1,12 +1,11 @@
-"use client"
-import {useTr} from "@/lib/i18n/config";
+import { initServerI18n } from '@/lib/i18n/server';
 
-export default function Home() {
-    const [t] = useTr();
+export default async function HomePage() {
+    const { t } = await initServerI18n('fa');
 
     return (
-        <div>
+        <main>
             <h1>{t('title')}</h1>
-        </div>
-    )
+        </main>
+    );
 }
