@@ -1,6 +1,7 @@
 "use client"
 import useStore from "@/lib/store/src/useCounterStore";
 import { Button } from "@/components/ui/button";
+import { toPersianNumber } from "@/lib/utils/number-utils";
 
 
 function Counter() {
