@@ -1,7 +1,6 @@
 "use client"
 import useStore from "@/lib/store/src/useCounterStore";
 import { Button } from "@/components/ui/button";
-import { toPersianNumber } from "@/lib/utils/number-utils";
 
 
 function Counter() {
@@ -11,7 +10,7 @@ function Counter() {
             <span>{count}</span>
             <button onClick={inc}>one up</button>
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
-                <Button variant='destructive'>Shadcn Works!</Button>
+                <Button variant='outline'>Shadcn Works!</Button>
             </div>
         </div>
     )
