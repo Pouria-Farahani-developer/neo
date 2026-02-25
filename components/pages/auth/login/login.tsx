@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { DynamicInput } from "@/components/ui/dynamic-input";
 import { cn } from "@/lib/utils";
 
 const APP_VERSION = "1.2";
 
 export default function Login() {
   return (
-    <div className="login-gradient flex min-h-dvh flex-col">
+    <div className="flex min-h-dvh flex-col">
       <header className="flex shrink-0 items-center justify-end pt-5 pl-4">
         <Button
           type="button"
@@ -51,38 +51,20 @@ export default function Login() {
 
           {/* فرم ورود */}
           <form className="flex flex-col gap-5">
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="mobile"
-                className="text-sm font-medium text-foreground"
-              >
-                شماره موبایل
-              </label>
-              <Input
-                id="mobile"
-                type="tel"
-                inputMode="numeric"
-                placeholder="۰۹۱۲۳۴۵۶۷۸۹"
-                className="rounded-lg border-input"
-                dir="ltr"
-                autoComplete="tel"
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <label
-                htmlFor="password"
-                className="text-sm font-medium text-foreground"
-              >
-                رمز ورود
-              </label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="••••••••"
-                className="rounded-lg border-input"
-                autoComplete="current-password"
-              />
-            </div>
+            <DynamicInput
+              id="mobile"
+              type="tel"
+              inputMode="numeric"
+              dir="ltr"
+              autoComplete="tel"
+              label="شماره موبایل"
+            />
+            <DynamicInput
+              id="password"
+              type="password"
+              autoComplete="current-password"
+              label="رمز ورود"
+            />
             <Button
               type="submit"
               className={cn(

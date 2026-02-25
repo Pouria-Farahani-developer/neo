@@ -211,7 +211,17 @@
         margin-inline: auto;
     }
 
+    /* پس‌زمینهٔ گرادیانی مخصوص صفحه لاگین — نوار لطیف در پایین */
     .login-gradient {
+        background: linear-gradient(
+                to top,
+                #006B51 0%,
+                #006B51 3%,
+                #55AA00 7%,
+                #E8F5E9 12%,
+                #FFFFFF 15%,
+                #FFFFFF 100%
+        );
     }
 
 }
