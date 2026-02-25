@@ -95,6 +95,8 @@
 
 :root {
     --radius: 0.625rem;
+    /* حداکثر عرض محتوا — طراحی تا سایز تبلت (بزرگتر از این extend نمی‌شود) */
+    --app-max-width: 768px;
 
     /* Light theme based on your Figma palette */
     --background: #FFFFFF;              /* Background */
@@ -196,5 +198,15 @@
     body {
         @apply bg-background text-foreground font-sans;
         font-variant-numeric: tabular-nums; /* اعداد فارسی پهنای ثابت */
+    }
+}
+
+/* کانتینر اصلی اپ — عرض حداکثر تا تبلت، در صفحات بزرگتر وسط‌چین */
+@layer components {
+    .app-container {
+        width: 100%;
+        max-width: var(--app-max-width);
+        margin-inline: auto;
+        border: 1px dotted black;
     }
 }
