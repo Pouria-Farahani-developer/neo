@@ -17,11 +17,9 @@ export default function RootLayout({
         <html lang="fa">
         <body className="antialiased">
         <QueryProvider>
-            <GlobalPersianDigits>
-                <div className="app-container min-h-screen">
-                    {children}
-                </div>
-            </GlobalPersianDigits>
+            {/* <GlobalPersianDigits> */}
+                {children}
+            {/* </GlobalPersianDigits> */}
         </QueryProvider>
         </body>
         </html>

@@ -97,6 +97,8 @@
     --radius: 0.625rem;
     /* حداکثر عرض محتوا — طراحی تا سایز تبلت (بزرگتر از این extend نمی‌شود) */
     --app-max-width: 768px;
+    /* پس‌زمینهٔ صفحات احراز هویت (ورود/ثبت‌نام) */
+    --auth-page-bg: #424242;
 
     /* Light theme based on your Figma palette */
     --background: #FFFFFF;              /* Background */
@@ -207,6 +209,6 @@
         width: 100%;
         max-width: var(--app-max-width);
         margin-inline: auto;
-        border: 1px dotted black;
     }
+
 }
