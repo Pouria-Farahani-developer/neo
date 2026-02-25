@@ -12,12 +12,12 @@ const APP_VERSION = "1.2";
 export default function Login() {
   return (
     <div className="login-gradient flex min-h-dvh flex-col">
-      <header className="flex shrink-0 items-center justify-end pb-4 pt-4">
+      <header className="flex shrink-0 items-center justify-end pt-5 pl-4">
         <Button
           type="button"
-          variant="secondary"
+          variant="outline"
           size="icon"
-          className="size-10 shrink-0 rounded-lg border border-input bg-secondary hover:bg-accent"
+          className="size-10 shrink-0 border border-input rounded-full cursor-pointer"
           aria-label="بازگشت"
         >
           <ChevronLeft className="size-5" />
@@ -26,22 +26,25 @@ export default function Login() {
 
       {/* ناحیهٔ وسط — لوگو و فرم عمودی وسط‌چین */}
       <div className="flex min-h-0 flex-1 flex-col justify-center">
-        <div className="mx-auto w-full max-w-sm px-4">
+        <div className="mx-auto w-full px-4">
           {/* لوگو و متن خوش‌آمد */}
           <div className="flex flex-col items-center gap-3 pb-8 text-center">
-            <div className="flex size-16 items-center justify-center" aria-hidden>
+            <div
+              className="flex items-center justify-center"
+              aria-hidden
+            >
               <Image
                 src="/assets/images/bank-logo.svg"
-                alt="لوگوی سرو"
-                width={64}
-                height={64}
-                className="size-16 object-contain"
+                alt="bank-logo"
+                width={130}
+                height={130}
+                className="h-[130px] w-[130px] object-contain"
               />
             </div>
             <h1 className="text-xl font-bold text-foreground">
               به سرو خوش آمدید
             </h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-foreground">
               نئوبانک سرمایه‌گذار محور بانک کشاورزی
             </p>
           </div>
@@ -83,8 +86,8 @@ export default function Login() {
             <Button
               type="submit"
               className={cn(
-                "h-11 w-full rounded-lg text-base font-medium text-white",
-                "bg-[var(--chart-2)] hover:bg-[var(--chart-5)]",
+                "h-11 w-full rounded-lg text-sm text-foreground",
+                "bg-[#C7FA37] hover:bg-[#C7FA37]",
                 "focus-visible:ring-[var(--chart-2)]"
               )}
             >
